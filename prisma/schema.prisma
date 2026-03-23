@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  createdAt DateTime @default(now())
+
+  builds Build[]
+  likes  Like[]
+}
+
+model Component {
+  id    String        @id @default(cuid())
+  name  String
+  type  ComponentType
+  price Int
+
+  socket String?
+
+  buildComponents BuildComponent[]
+}
+
+model Build {
+  id         String   @id @default(cuid())
+  name       String
+  userId     String
+  createdAt  DateTime @default(now())
+  totalPrice Int      @default(0)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  components BuildComponent[]
+  likes      Like[]
+  isPublic   Boolean          @default(false)
+}
+
+model BuildComponent {
+  id          String    @id @default(cuid())
+  buildId     String
+  componentId String
+  build       Build     @relation(fields: [buildId], references: [id], onDelete: Cascade)
+  component   Component @relation(fields: [componentId], references: [id], onDelete: Cascade)
+
+  @@unique([buildId, componentId])
+}
+
+model Like {
+  id      String @id @default(cuid())
+  userId  String
+  buildId String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  build   Build  @relation(fields: [buildId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, buildId])
+}
+
+enum ComponentType {
+  cpu
+  gpu
+  psu
+  ram
+  ssd
+  motherboard
+  case
+  cooler
+}
