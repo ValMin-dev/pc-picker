@@ -2,6 +2,7 @@ import "dotenv/config";
 import { Pool } from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient, ComponentType } from "../lib/generated/prisma/client";
+import bcrypt from "bcryptjs";
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const adapter = new PrismaPg(pool as any);
@@ -451,11 +452,13 @@ async function main() {
 
   // Создаем тестового пользователя
   console.log("Добавляем тестового пользователя...");
+  const hashedPassword = await bcrypt.hash("password123", 10);
+
   await prisma.user.create({
     data: {
       email: "test@test.com",
       name: "Тестовый Пользователь",
-      password: "123456",
+      password: hashedPassword,
     },
   });
 

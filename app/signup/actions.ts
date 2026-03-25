@@ -26,14 +26,14 @@ export async function signUpAction(
     };
   if (!name) return { error: "Введите имя" };
 
-  const existingUser = await prisma.prisma.user.findUnique({
+  const existingUser = await prisma.user.findUnique({
     where: { email },
   });
   if (existingUser) return { error: "Email уже используется" };
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  await prisma.prisma.user.create({
+  await prisma.user.create({
     data: {
       email,
       password: hashedPassword,
