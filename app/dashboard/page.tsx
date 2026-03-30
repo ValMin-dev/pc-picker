@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
+import { CurrentBuild } from "./components/CurrentBuild";
+import { Popular } from "./components/Popular";
 
 export default async function Dashboard() {
   const session = await auth();
@@ -9,10 +11,13 @@ export default async function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-bold">
-        Добро пожаловать, {session.user.name ?? session.user.email}!
-      </h1>
+    <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
+      <div className="min-w-0 flex-1">
+        <CurrentBuild />
+      </div>
+      <aside className="shrink-0 lg:sticky lg:top-6 lg:w-40">
+        <Popular />
+      </aside>
     </div>
   );
 }
