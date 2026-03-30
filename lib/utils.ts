@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function getTabValue(pathName: string) {
   if (pathName === "/") return "home";
-  if (pathName === "/dashboard" || pathName.startsWith("/dashboard"))
+  if (pathName === "/dashboard" || pathName.startsWith("/dashboard/"))
     return "dashboard";
   if (pathName === "/builds" || pathName.startsWith("/builds")) return "builds";
   if (pathName === "/builds/explore" || pathName.startsWith("/builds/explore"))

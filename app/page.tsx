@@ -1,10 +1,16 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { TypographyH1 } from "@/components/ui/typography-h1";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        hallo world
+    <div className="flex min-h-screen items-center justify-center">
+      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center py-32 px-16">
+        <TypographyH1>Создай идеальный ПК с PC Picker</TypographyH1>
+        <br />
+        <Button>
+          <Link href="/dashboard">Начать</Link>
+        </Button>
       </main>
     </div>
   );
