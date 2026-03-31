@@ -14,15 +14,18 @@ import Link from "next/link";
 type BuildCard = {
   user: {
     email: string;
+    name: string | null;
   };
   id: string;
-  name: string;
+  name: string | null;
   totalPrice: number;
   createdAt: Date | null;
   components: Array<{
     id: string;
     component: {
       name: string;
+      type: string;
+      price: number;
     };
   }>;
 };
@@ -37,10 +40,13 @@ export function BuildCard({ build, children }: Props) {
       <CardHeader className="pb-2 flex flex-row justify-between pag-2 items-start">
         <div className="flex mix-w-0">
           <CardTitle>
-            <TypographyH3>{build.name}</TypographyH3>
+            <TypographyH3>{build.name || "Без названия"}</TypographyH3>
           </CardTitle>
           <p className="text-xs text-muted-foreground mt-1 ">
-            Создал {build.user.email.trim()}
+            Создал{" "}
+            {build.user.name?.trim() ||
+              build.user.email?.trim() ||
+              "Неизвестный"}
           </p>
         </div>
         <div className="shrink-0">
@@ -83,7 +89,9 @@ export function BuildCard({ build, children }: Props) {
             </p>
           )}
 
-          <div className="flex flex-row gap-2">{children}</div>
+          <div className="flex flex-row justify-start items-end gap-2">
+            {children}
+          </div>
         </CardDescription>
       </CardFooter>
     </Card>
