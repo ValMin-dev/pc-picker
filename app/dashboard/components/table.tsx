@@ -76,11 +76,7 @@ export function TableParts({
           const Icon = iconMap[category.icon];
           const selectedComponent = selectedByCategory[category.id];
           return (
-            <TableRow
-              className="my-2 "
-              key={category.id}
-              onClick={() => setOpenCategoryId(category.id)}
-            >
+            <TableRow className="my-2 " key={category.id}>
               <TableCell>
                 <Icon className="h-6 w-6 " />
               </TableCell>
