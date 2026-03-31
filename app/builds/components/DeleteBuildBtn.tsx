@@ -27,6 +27,7 @@ export function DeleteBuildBtn({ buildId, deleteAction }: Props) {
       variant="ghost"
       onClick={handleClick}
       disabled={isPanding}
+      size="sm"
     >
       Удалить
     </Button>

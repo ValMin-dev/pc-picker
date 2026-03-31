@@ -42,22 +42,17 @@ export function BuildCard({ build, children }: Props) {
           <CardTitle>
             <TypographyH3>{build.name || "Без названия"}</TypographyH3>
           </CardTitle>
-          <p className="text-xs text-muted-foreground mt-1 ">
-            Создал{" "}
-            {build.user.name?.trim() ||
-              build.user.email?.trim() ||
-              "Неизвестный"}
-          </p>
         </div>
         <div className="shrink-0">
           <Button variant="outline" size="sm">
-            <Link href={`/${build.id}`}>
+            <Link href={`/builds/${build.id}/edit`}>
               <Pencil className="h-4 w-4" />
             </Link>
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="flex-1 pt-0 space-y-1 pag-2">
+
+      <CardContent className="flex-1 pt-0 space-y-1 gap-2 border-t border-b py-2">
         {build.components.length > 0 && (
           <>
             <p className="text-sm font-medium mt-2">Компоненты:</p>
@@ -69,7 +64,7 @@ export function BuildCard({ build, children }: Props) {
           </>
         )}
       </CardContent>
-      <CardFooter className="flex flex-row justify-between gap-2 pt-4 border-t">
+      <CardFooter className="flex flex-row justify-between gap-2 pt-4 mx-auto">
         <CardDescription className="text-sm font-medium tabular-nums flex flex-col justify-between">
           <span className="text-sky-500 text-lg font-bold">
             {new Intl.NumberFormat("ua-UA", {
@@ -89,11 +84,13 @@ export function BuildCard({ build, children }: Props) {
             </p>
           )}
 
-          <div className="flex flex-row justify-start items-end gap-2">
-            {children}
-          </div>
+          <div className="flex flex-row gap-2 mt-2">{children}</div>
         </CardDescription>
       </CardFooter>
+      <p className="text-xs text-muted-foreground mt-1 text-right pr-3">
+        Создал{" "}
+        {build.user.name?.trim() || build.user.email?.trim() || "Неизвестный"}
+      </p>
     </Card>
   );
 }
