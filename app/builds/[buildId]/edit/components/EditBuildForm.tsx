@@ -1,3 +1,4 @@
+// Форма редактирования уже сохранённой сборки.
 "use client";
 import { SaveBuildDialog } from "@/app/dashboard/components/SaveBuildDialog";
 import { TableParts } from "@/app/dashboard/components/table";

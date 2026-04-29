@@ -1,0 +1,141 @@
+{
+  "project": {
+    "name": "pc-picker",
+    "summary": "Next.js приложение для сборки ПК. Позволяет регистрироваться, входить, подбирать комплектующие, сохранять свои сборки, делать их публичными и лайкать чужие.",
+    "architecture": {
+      "app": "страницы и server actions Next.js App Router",
+      "components": "переиспользуемые UI и формы",
+      "lib": "типы, утилиты, работа с базой и запросы к сборкам",
+      "prisma": "схема базы, клиент и seed",
+      "types": "расширения типов NextAuth"
+    }
+  },
+  "structure": {
+    "root": {
+      "auth.ts": "настройка NextAuth и credentials-авторизации",
+      "proxy.ts": "защита приватных страниц через проверку cookie сессии",
+      "next.config.ts": "конфигурация Next.js",
+      "prisma.config.ts": "конфигурация Prisma",
+      "package.json": "npm-скрипты и зависимости проекта",
+      "docs.json": "краткая документация по проекту"
+    },
+    "app": {
+      "layout.tsx": "общий layout приложения",
+      "page.tsx": "главная стартовая страница",
+      "login": "страница входа и server action для логина",
+      "signup": "страница регистрации и server action для создания пользователя",
+      "dashboard": "экран создания сборки и популярные сборки",
+      "builds": "список своих сборок, публичные сборки и редактирование"
+    },
+    "components": {
+      "header.tsx": "шапка сайта",
+      "header-nav.tsx": "навигация в шапке",
+      "login-form.tsx": "форма входа",
+      "signup-form.tsx": "форма регистрации",
+      "error-message.tsx": "блок показа ошибок",
+      "ui": "базовые UI-компоненты shadcn"
+    },
+    "lib": {
+      "db.ts": "Prisma-клиент",
+      "types.ts": "типы комплектующих",
+      "constants.ts": "категории комплектующих",
+      "builds.ts": "запросы для сборок",
+      "utils.ts": "общие утилиты"
+    },
+    "prisma": {
+      "schema.prisma": "схема базы данных",
+      "seed.ts": "заполнение тестовыми данными"
+    }
+  },
+  "files": {
+    "auth.ts": "Конфигурирует NextAuth, проверяет email и пароль, собирает JWT и session.",
+    "proxy.ts": "Пускает гостей только на публичные страницы, а на закрытые отправляет на /login.",
+    "app/layout.tsx": "Подключает шрифты, шапку, toaster и общую HTML-обёртку приложения.",
+    "app/page.tsx": "Показывает приветственный экран и кнопку перехода в dashboard.",
+    "app/login/actions.ts": "Обрабатывает вход через server action и возвращает ошибки формы.",
+    "app/login/page.tsx": "Показывает форму логина или сразу ведёт в dashboard, если пользователь уже вошёл.",
+    "app/signup/actions.ts": "Проверяет поля регистрации, создаёт пользователя и хеширует пароль.",
+    "app/signup/page.tsx": "Показывает форму регистрации или ведёт в dashboard, если пользователь уже вошёл.",
+    "app/dashboard/layout.tsx": "Контейнер для dashboard-страниц.",
+    "app/dashboard/page.tsx": "Собирает главный экран со сборкой и блоком популярных сборок.",
+    "app/dashboard/actions.ts": "Сохраняет сборки и загружает компоненты по категориям.",
+    "app/api/auth/[...nextauth]/route.ts": "Подключает GET и POST обработчики NextAuth.",
+    "app/builds/layout.tsx": "Контейнер для страниц со сборками.",
+    "app/builds/actions.ts": "Ставит лайки, удаляет сборки и переключает публичность.",
+    "app/builds/page.tsx": "Показывает сборки текущего пользователя.",
+    "app/builds/explore/page.tsx": "Показывает публичные сборки других пользователей.",
+    "app/builds/[buildId]/edit/page.tsx": "Загружает одну сборку и открывает форму её редактирования.",
+    "app/builds/[buildId]/edit/components/EditBuildForm.tsx": "Позволяет менять состав уже сохранённой сборки.",
+    "components/header.tsx": "Шапка сайта с названием и навигацией.",
+    "components/header-nav.tsx": "Показывает ссылки для гостя и вкладки для вошедшего пользователя.",
+    "components/login-form.tsx": "Форма входа пользователя.",
+    "components/signup-form.tsx": "Форма регистрации пользователя.",
+    "components/error-message.tsx": "Красивый красный блок для текста ошибки.",
+    "app/dashboard/components/CurrentBuild.tsx": "Главный блок выбора комплектующих и открытия диалога сохранения.",
+    "app/dashboard/components/Popular.tsx": "Список самых популярных публичных сборок.",
+    "app/dashboard/components/AddComponentDialog.tsx": "Диалог выбора комплектующих внутри категории.",
+    "app/dashboard/components/ComponentCard.tsx": "Карточка одного комплектующего в списке выбора.",
+    "app/dashboard/components/SaveBuildDialog.tsx": "Диалог, где пользователь вводит имя и сохраняет сборку.",
+    "app/dashboard/components/table.tsx": "Таблица категорий компонентов и итоговой цены сборки.",
+    "app/builds/components/BuildCard.tsx": "Общая карточка сохранённой сборки.",
+    "app/builds/components/DeleteBuildBtn.tsx": "Кнопка удаления сборки с подтверждением.",
+    "lib/db.ts": "Создаёт и переиспользует Prisma-клиент для Postgres.",
+    "lib/types.ts": "Хранит типы компонентных категорий и соответствия между UI и базой.",
+    "lib/constants.ts": "Содержит список категорий комплектующих для интерфейса.",
+    "lib/builds.ts": "Даёт готовые функции для загрузки своих, публичных и популярных сборок.",
+    "lib/utils.ts": "Склеивает CSS-классы и вычисляет активную вкладку в шапке.",
+    "types/next-auth.d.ts": "Расширяет типы NextAuth полем id пользователя.",
+    "prisma/schema.prisma": "Описывает модели User, Component, Build, BuildComponent и Like.",
+    "prisma/seed.ts": "Наполняет базу тестовыми компонентами и тестовым пользователем.",
+    "app/globals.css": "Глобальные стили, тема и переменные Tailwind/shadcn."
+  },
+  "packages": {
+    "scripts": {
+      "dev": "Запускает Next.js в режиме разработки.",
+      "build": "Собирает production-версию приложения.",
+      "start": "Запускает production-сборку Next.js.",
+      "lint": "Проверяет код через ESLint."
+    },
+    "dependencies": {
+      "@prisma/adapter-pg": "Адаптер Prisma для работы с PostgreSQL через pg.",
+      "@prisma/client": "Prisma-клиент для запросов к базе.",
+      "@trivago/prettier-plugin-sort-imports": "Сортирует импорты при форматировании.",
+      "autoprefixer": "Добавляет CSS-префиксы автоматически.",
+      "bcryptjs": "Хеширует и проверяет пароли.",
+      "class-variance-authority": "Помогает строить варианты UI-компонентов через классы.",
+      "clsx": "Склеивает CSS-классы по условиям.",
+      "dotenv": "Читает переменные окружения из .env.",
+      "lucide-react": "Иконки для интерфейса.",
+      "next": "Фреймворк React с App Router и server actions.",
+      "next-auth": "Авторизация и сессии пользователей.",
+      "next-themes": "Переключение темы приложения.",
+      "pg": "PostgreSQL-клиент для Node.js.",
+      "prettier": "Форматирование кода.",
+      "radix-ui": "Набор доступных UI-примитивов.",
+      "react": "Базовая библиотека UI.",
+      "react-dom": "Рендер React в DOM.",
+      "shadcn": "Набор и генератор UI-компонентов.",
+      "sonner": "Красивые toast-уведомления.",
+      "tailwind-merge": "Убирает конфликты классов Tailwind.",
+      "tw-animate-css": "Готовые анимации для Tailwind."
+    },
+    "devDependencies": {
+      "@tailwindcss/postcss": "Связка Tailwind с PostCSS.",
+      "@types/node": "Типы Node.js для TypeScript.",
+      "@types/pg": "Типы для pg.",
+      "@types/react": "Типы React.",
+      "@types/react-dom": "Типы ReactDOM.",
+      "eslint": "Статический анализ кода.",
+      "eslint-config-next": "ESLint-правила для Next.js.",
+      "prisma": "CLI Prisma для схемы, миграций и генерации клиента.",
+      "tailwindcss": "Utility-first CSS-фреймворк.",
+      "tsx": "Запуск TypeScript-скриптов без отдельной сборки.",
+      "typescript": "Язык и компилятор TypeScript."
+    }
+  },
+  "notes": [
+    "В проекте есть строки с битой кодировкой, их лучше отдельно почистить.",
+    "Большая часть папки components/ui состоит из базовых компонентов shadcn/ui.",
+    "Документ описывает текущее состояние проекта на момент генерации."
+  ]
+}

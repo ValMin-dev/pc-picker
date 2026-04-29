@@ -1,3 +1,4 @@
+// Карточка сохранённой сборки.
 import { Button } from "@/components/ui/button";
 import {
   Card,

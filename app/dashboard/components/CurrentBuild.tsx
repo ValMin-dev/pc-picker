@@ -1,3 +1,4 @@
+// Блок, где пользователь собирает свой ПК.
 "use client";
 import { Button } from "@/components/ui/button";
 import { TypographyH3 } from "@/components/ui/typography-h3";

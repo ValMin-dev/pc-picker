@@ -1,3 +1,4 @@
+// Карточка одного комплектующего внутри диалога.
 import { Button } from "@/components/ui/button";
 import {
   Card,

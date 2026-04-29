@@ -1,3 +1,4 @@
+// Главная страница dashboard со сборкой и популярным.
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { CurrentBuild } from "./components/CurrentBuild";

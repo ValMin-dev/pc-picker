@@ -1,3 +1,4 @@
+// Расширяет типы NextAuth полем id пользователя.
 import { DefaultSession, DefaultUser } from "next-auth";
 
 declare module "next-auth" {

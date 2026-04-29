@@ -1,3 +1,4 @@
+// Общий layout для страниц со сборками.
 export default function BuildsLayout({
   children,
 }: {

@@ -1,3 +1,4 @@
+// Готовые запросы для загрузки сборок из базы.
 import { prisma } from "./db";
 
 export async function getMyBuilds(userId: string) {

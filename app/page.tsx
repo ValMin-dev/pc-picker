@@ -1,3 +1,4 @@
+// Главная стартовая страница проекта.
 import { Button } from "@/components/ui/button";
 import { TypographyH1 } from "@/components/ui/typography-h1";
 import Link from "next/link";

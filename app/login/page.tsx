@@ -1,3 +1,4 @@
+// Страница входа пользователя.
 import { LoginForm } from "@/components/login-form";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";

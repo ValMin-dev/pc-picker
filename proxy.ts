@@ -1,3 +1,4 @@
+// Проверяет, пускать ли пользователя на страницу без логина.
 import { NextRequest, NextResponse } from "next/server";
 
 const PUBLIC_PATHS = new Set(["/", "/signup", "/login"]);

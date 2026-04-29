@@ -1,3 +1,4 @@
+// Блок с популярными публичными сборками.
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getPopularBuilds } from "@/lib/builds";
 import { Eye, ThumbsUp } from "lucide-react";

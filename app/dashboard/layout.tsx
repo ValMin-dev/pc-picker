@@ -1,3 +1,4 @@
+// Общий layout для dashboard.
 export default function DashboardLayout({
   children,
 }: {

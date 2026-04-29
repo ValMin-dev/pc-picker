@@ -1,3 +1,4 @@
+// Серверные действия для страницы входа.
 "use server";
 
 import { redirect } from "next/navigation";

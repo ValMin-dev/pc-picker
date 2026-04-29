@@ -1,3 +1,4 @@
+// Красивый блок для показа ошибок.
 type Props = {
   message: string;
 };

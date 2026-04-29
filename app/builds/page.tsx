@@ -1,3 +1,4 @@
+// Страница со сборками текущего пользователя.
 import { auth } from "@/auth";
 import { TypographyH3 } from "@/components/ui/typography-h3";
 import { getMyBuilds } from "@/lib/builds";

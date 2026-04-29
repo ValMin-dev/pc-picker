@@ -1,3 +1,4 @@
+// Общие типы для комплектующих и сборок.
 export type ComponentCategory = {
   id: string;
   name: string;

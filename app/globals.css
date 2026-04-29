@@ -1,3 +1,4 @@
+/* Глобальные стили и тема всего приложения. */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";

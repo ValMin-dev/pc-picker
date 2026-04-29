@@ -1,3 +1,4 @@
+// Подключение Prisma к Postgres и общий клиент базы.
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "./generated/prisma/client";
 import { Pool } from "pg";

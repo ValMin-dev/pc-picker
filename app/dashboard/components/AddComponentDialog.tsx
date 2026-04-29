@@ -1,3 +1,4 @@
+// Диалог выбора компонента по категории.
 "use client";
 import {
   DialogContent,

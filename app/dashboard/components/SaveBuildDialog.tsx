@@ -1,3 +1,4 @@
+// Диалог сохранения сборки.
 import { Component } from "@/lib/types";
 import { saveBuildAction, SaveBuildFormState } from "../actions";
 import { useRouter } from "next/navigation";

@@ -1,3 +1,4 @@
+// Список категорий комплектующих для интерфейса.
 import { ComponentCategory } from "./types";
 
 export const componentCategories: ComponentCategory[] = [

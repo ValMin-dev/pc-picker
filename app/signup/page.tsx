@@ -1,3 +1,4 @@
+// Страница регистрации пользователя.
 import { SignupForm } from "@/components/signup-form";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";

@@ -1,3 +1,4 @@
+// Верхняя шапка сайта с логотипом и навигацией.
 import Link from "next/link";
 import { TypographyH3 } from "./ui/typography-h3";
 import { HeaderNav } from "./header-nav";

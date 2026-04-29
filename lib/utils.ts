@@ -1,3 +1,4 @@
+// Небольшие вспомогательные функции проекта.
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 

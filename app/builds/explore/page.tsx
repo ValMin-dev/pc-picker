@@ -1,3 +1,4 @@
+// Страница публичных сборок.
 import { auth } from "@/auth";
 import { TypographyH1 } from "@/components/ui/typography-h1";
 import { getPublicBuilds } from "@/lib/builds";

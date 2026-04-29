@@ -1,3 +1,4 @@
+// Навигация в шапке для гостя и авторизованного пользователя.
 "use client";
 import { getTabValue } from "@/lib/utils";
 import { Session } from "next-auth";

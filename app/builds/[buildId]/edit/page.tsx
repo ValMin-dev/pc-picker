@@ -1,3 +1,4 @@
+// Страница редактирования одной сборки.
 import { getBuildToEdit } from "@/lib/builds";
 import { EditBuildForm } from "./components/EditBuildForm";
 
